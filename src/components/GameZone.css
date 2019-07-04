@@ -3,10 +3,10 @@
     width: 500px;
     margin: 20px auto 80px;
     justify-content: space-between;
-    box-shadow: 0 4px 2px -2px #9b59b6;
+    box-shadow: 0 4px 2px -2px #74b9ff;
     border-radius: 3px;
     padding: 5px 10px;
-    color: #8e44ad;
+    color: #0984e3;
 }
 
 .game-zone {
@@ -19,29 +19,29 @@
     align-content: center;
 }
 
-.pixel {
+.game-zone > .pixel {
     height: 33.2%;
     width: 33.2%;
 }
 
 .border-top {
-    border-top: 1px solid #8e44ad;
+    border-top: 1px solid #0984e3;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #8e44ad;
+    border-bottom: 1px solid #0984e3;
 }
 
 .border-right {
-    border-right: 1px solid #8e44ad;
+    border-right: 1px solid #0984e3;
 }
 
 .border-left {
-    border-left: 1px solid #8e44ad;
+    border-left: 1px solid #0984e3;
 }
 
 .border-full {
-    border: 1px solid #8e44ad;
+    border: 1px solid #0984e3;
 }
 
 .pixel-selected-p1 {
@@ -95,7 +95,7 @@
     display: inline-block;
     padding: 10px 20px;
     border-radius: 10px;
-    background: #8e44ad;
+    background: #0984e3;
     color: #fff;
     margin-top: 50px;
     cursor: pointer;
@@ -109,7 +109,7 @@
     display: inline-block;
     height: 50px;
     width: 50px;
-    background: url('./icons8-restart-500-white.png') #8e44ad 50% 50% no-repeat;
+    background: url('./icons8-restart-500-white.png') #0984e3 50% 50% no-repeat;
     background-size: 30px;
     border-radius: 100%; 
     cursor: pointer;
@@ -122,4 +122,103 @@
 @keyframes rotate {
     0% {transform: rotate(0deg)}
     100% {transform: rotate(360deg)}
+}
+
+/* Responsive width */
+
+@media only screen and (max-width: 600px) {
+    .score-wrapper {
+       width: 90%;
+    }
+    
+    .game-zone {
+        width: 90%;
+    }
+
+    .game-zone > .pixel {
+        height: 32%;
+        width: 32%;
+    }
+
+    .pixel-selected-p1 {
+        background: url('./icons8-cross-480.png') #fff 50% 50% no-repeat;
+        background-size: 60px;
+    }
+    
+    .pixel-selected-p2 {
+        background: url('./icons8-round-480.png') #fff 50% 50% no-repeat;
+        background-size: 60px;
+    }    
+
+    .popup-container > .popup-box {
+        width: 90%;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .pixel-selected-p1 {
+        background: url('./icons8-cross-480.png') #fff 50% 50% no-repeat;
+        background-size: 50px;
+    }
+    
+    .pixel-selected-p2 {
+        background: url('./icons8-round-480.png') #fff 50% 50% no-repeat;
+        background-size: 50px;
+    }    
+
+    .restart {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background: url('./icons8-restart-500-white.png') #8e44ad 50% 50% no-repeat;
+        background-size: 20px;
+        border-radius: 100%; 
+        cursor: pointer;
+    }    
+}
+
+@media only screen and (max-width: 200px) {
+    .pixel-selected-p1 {
+        background: url('./icons8-cross-480.png') #fff 50% 50% no-repeat;
+        background-size: 30px;
+    }
+    
+    .pixel-selected-p2 {
+        background: url('./icons8-round-480.png') #fff 50% 50% no-repeat;
+        background-size: 30px;
+    }    
+
+    .popup-container > .popup-box {
+        font-size: 9px;
+    }
+}
+
+/* Responsive height */
+
+@media only screen and (max-height: 300px) {
+    .popup-container > .popup-box {
+        height: 90%;
+    }
+
+    .popup-container > .popup-box > .popup-title {
+        margin-top: 50px;
+    }
+    
+    .popup-container > .popup-box > .popup-play-again {
+        padding: 10px 20px;
+        margin-top: 20px;
+    } 
+}
+
+@media only screen and (max-height: 230px) {
+    .popup-container > .popup-box > .popup-title {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-height: 200px) {
+    .popup-container > .popup-box > .popup-title {
+        margin-top: 20px;
+    }
 }
