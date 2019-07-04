@@ -162,7 +162,7 @@ class GameZone extends React.Component {
                 <div className={this.state.isPopupVisible? "popup-container show" : "popup-container"}>
                     <div className="popup-box">
                         <h1 className="popup-title">{this.state.popupTitle}</h1>
-                        <span onClick={this.handlePlayAgain} className="popup-restart">Play Again</span>
+                        <span onClick={this.handlePlayAgain} className="popup-play-again">Play Again</span>
                     </div>
                 </div>
             </div>           
