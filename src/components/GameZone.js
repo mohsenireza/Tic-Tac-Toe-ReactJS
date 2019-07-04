@@ -17,7 +17,9 @@ class GameZone extends React.Component {
             ['3', '5', '7'],
         ],
         isPopupVisible: false,
-        popupTitle: ''
+        popupTitle: '',
+        player1Score: 0,
+        computerScore: 0
     }
 
     constructor(props) {
@@ -46,7 +48,9 @@ class GameZone extends React.Component {
                 setTimeout(() => {
                     this.setState({
                         isPopupVisible: true,
-                        popupTitle: this.state.turn === 'p1'? 'You Win' : 'You Lose'
+                        popupTitle: this.state.turn === 'p1'? 'You Win' : 'You Lose',
+                        player1Score: this.state.turn === 'p1'? this.state.player1Score + 1 : this.state.player1Score,
+                        computerScore: this.state.turn === 'p2'? this.state.computerScore + 1 : this.state.computerScore
                     });
                 }, this.state.turn === 'p1'? 0 : 500);
                 return;
@@ -110,6 +114,22 @@ class GameZone extends React.Component {
             selectedPixelsByPlayer1: [],
             selectedPixelsByPlayer2: [],
             isPopupVisible: false,
+            popupTitle: '',
+            player1Score: 0,
+            computerScore: 0
+        });
+        for (let i = 1; i <= 9; i++) {
+            this.pixels['pixel' + i].current.classList.remove('pixel-selected-p1')
+            this.pixels['pixel' + i].current.classList.remove('pixel-selected-p2')
+        }
+    }
+
+    handlePlayAgain = (e) => {
+        this.setState({
+            turn: 'p1',
+            selectedPixelsByPlayer1: [],
+            selectedPixelsByPlayer2: [],
+            isPopupVisible: false,
             popupTitle: ''
         });
         for (let i = 1; i <= 9; i++) {
@@ -121,6 +141,10 @@ class GameZone extends React.Component {
     render() {
         return (
             <div>
+                <div className="score-wrapper">
+                    <span>You: {this.state.player1Score}</span>
+                    <span>Computer: {this.state.computerScore}</span>
+                </div>
                 <div className="game-zone">
                     <div id="1" onClick={this.handleClickPixel} ref={this.pixels.pixel1} className="pixel"></div>
                     <div id="2" onClick={this.handleClickPixel} ref={this.pixels.pixel2} className="pixel border-left border-right"></div>
@@ -138,7 +162,7 @@ class GameZone extends React.Component {
                 <div className={this.state.isPopupVisible? "popup-container show" : "popup-container"}>
                     <div className="popup-box">
                         <h1 className="popup-title">{this.state.popupTitle}</h1>
-                        <span onClick={this.handleRestartGame} className="popup-restart">Play Again</span>
+                        <span onClick={this.handlePlayAgain} className="popup-restart">Play Again</span>
                     </div>
                 </div>
             </div>           

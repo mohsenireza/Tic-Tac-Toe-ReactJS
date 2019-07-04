@@ -1,5 +1,15 @@
+.score-wrapper {
+    display: flex;
+    width: 500px;
+    margin: 20px auto 80px;
+    justify-content: space-between;
+    box-shadow: 0 4px 2px -2px #ccc;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
 .game-zone {
-    margin: 100px auto 50px;
+    margin: 20px auto 50px;
     display: flex;
     flex-wrap: wrap;
     height: 500px;
