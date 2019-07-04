@@ -1,7 +1,51 @@
 .pixel-selected-p1 {
-    background-color: red;
+    background: url('./cross-480.png') #fff 50% 50% no-repeat;
+    background-size: 90px;
 }
 
 .pixel-selected-p2 {
-    background-color: blue;
+    background: url('./round-480.png') #fff 50% 50% no-repeat;
+    background-size: 90px;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* background:radial-gradient(red,blue); */
+}
+
+.popup-container.show {
+    display: block;
+}
+
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 300px;
+    width: 500px;
+    background: #fff;
+    box-shadow: 0 0 50px 7px #ccc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-title {
+    text-align: center; 
+    margin-top: 80px;
+}
+
+.popup-reload {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #9b59b6;
+    color: #fff;
+    margin-top: 50px;
+    cursor: pointer;
 }
