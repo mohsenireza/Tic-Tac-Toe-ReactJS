@@ -104,7 +104,7 @@ class GameZone extends React.Component {
         }
     }
 
-    handleReloadGame = (e) => {
+    handleRestartGame = (e) => {
         this.setState({
             turn: 'p1',
             selectedPixelsByPlayer1: [],
@@ -131,11 +131,14 @@ class GameZone extends React.Component {
                     <div id="7" onClick={this.handleClickPixel} ref={this.pixels.pixel7} className="pixel"></div>
                     <div id="8" onClick={this.handleClickPixel} ref={this.pixels.pixel8} className="pixel border-left border-right"></div>
                     <div id="9" onClick={this.handleClickPixel} ref={this.pixels.pixel9} className="pixel"></div>
-                </div>  
-                 <div className={this.state.isPopupVisible? "popup-container show" : "popup-container"}>
+                </div> 
+                <div className="restart-wrapper">
+                     <span onClick={this.handleRestartGame} className="restart"></span>
+                </div>
+                <div className={this.state.isPopupVisible? "popup-container show" : "popup-container"}>
                     <div className="popup-box">
                         <h1 className="popup-title">{this.state.popupTitle}</h1>
-                        <span onClick={this.handleReloadGame} className="popup-reload">Play Again</span>
+                        <span onClick={this.handleRestartGame} className="popup-restart">Play Again</span>
                     </div>
                 </div>
             </div>           

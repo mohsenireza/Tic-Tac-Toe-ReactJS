@@ -1,5 +1,5 @@
 .game-zone {
-    margin: 100px auto;
+    margin: 100px auto 50px;
     display: flex;
     flex-wrap: wrap;
     height: 500px;
@@ -34,12 +34,12 @@
 }
 
 .pixel-selected-p1 {
-    background: url('./cross-480.png') #fff 50% 50% no-repeat;
+    background: url('./icons8-cross-480.png') #fff 50% 50% no-repeat;
     background-size: 90px;
 }
 
 .pixel-selected-p2 {
-    background: url('./round-480.png') #fff 50% 50% no-repeat;
+    background: url('./icons8-round-480.png') #fff 50% 50% no-repeat;
     background-size: 90px;
 }
 
@@ -80,7 +80,7 @@
     margin-top: 80px;
 }
 
-.popup-container > .popup-box > .popup-reload {
+.popup-container > .popup-box > .popup-restart {
     display: inline-block;
     padding: 10px 20px;
     border-radius: 10px;
@@ -88,4 +88,27 @@
     color: #fff;
     margin-top: 50px;
     cursor: pointer;
+}
+
+.restart-wrapper {
+    text-align: center;
+}
+
+.restart {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url('./icons8-restart-500.png') #fff 50% 50% no-repeat;
+    background-size: 30px;
+    border-radius: 100%; 
+    cursor: pointer;
+}
+
+.restart:hover {
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
 }
