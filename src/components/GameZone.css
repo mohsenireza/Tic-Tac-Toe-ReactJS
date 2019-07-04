@@ -14,23 +14,23 @@
 }
 
 .border-top {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #95a5a6;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #95a5a6;
 }
 
 .border-right {
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #95a5a6;
 }
 
 .border-left {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #95a5a6;
 }
 
 .border-full {
-    border: 1px solid #ccc;
+    border: 1px solid #95a5a6;
 }
 
 .pixel-selected-p1 {
