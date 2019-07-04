@@ -9,38 +9,43 @@
 }
 
 .popup-container {
-    display: none;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    /* background:radial-gradient(red,blue); */
+    background:radial-gradient(rgba(240,240,240,0.5),rgba(220,220,220,0.9));
 }
 
 .popup-container.show {
-    display: block;
+    visibility: visible;
 }
 
-.popup-box {
+.popup-container > .popup-box {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%) scale(0);
     height: 300px;
     width: 500px;
     background: #fff;
     box-shadow: 0 0 50px 7px #ccc;
     border-radius: 10px;
     text-align: center;
+    transition: 0.3s;
 }
 
-.popup-title {
+.popup-container.show > .popup-box {
+    transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.popup-container > .popup-box > .popup-title {
     text-align: center; 
     margin-top: 80px;
 }
 
-.popup-reload {
+.popup-container > .popup-box > .popup-reload {
     display: inline-block;
     padding: 10px 20px;
     border-radius: 10px;
