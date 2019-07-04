@@ -43,19 +43,23 @@ class GameZone extends React.Component {
                 win = win && (this.state.turn === 'p1'? this.state.selectedPixelsByPlayer1.includes(element) : this.state.selectedPixelsByPlayer2.includes(element));
             });
             if(win) { // someone won
-                this.setState({
-                    isPopupVisible: true,
-                    popupTitle: this.state.turn === 'p1'? 'You Win' : 'You Lose'
-                });
+                setTimeout(() => {
+                    this.setState({
+                        isPopupVisible: true,
+                        popupTitle: this.state.turn === 'p1'? 'You Win' : 'You Lose'
+                    });
+                }, this.state.turn === 'p1'? 0 : 500);
                 return;
             }
         }
         // check if all pixels filled
         if(this.state.selectedPixelsByPlayer1.length + this.state.selectedPixelsByPlayer2.length === 9) {
-            this.setState({
-                isPopupVisible: true,
-                popupTitle: 'Game Over'
-            });
+            setTimeout(() => {
+                this.setState({
+                    isPopupVisible: true,
+                    popupTitle: 'Game Over'
+                });
+            }, this.state.turn === 'p1'? 0 : 500);
             return;
         }
         // no one won, game is continuing
@@ -64,9 +68,20 @@ class GameZone extends React.Component {
 
     changeTurn = () => {
         if(this.state.turn === 'p1') 
-            this.setState({turn: 'p2'});
+            this.setState({turn: 'p2'}, this.computerSelectPixel);
         else 
             this.setState({turn: 'p1'});
+    }
+
+    computerSelectPixel() {
+        let pixel;
+        do {
+            const randomNumber = Math.floor(Math.random() * 9) + 1;
+            pixel = this.pixels['pixel' + randomNumber].current;
+        } while (pixel.classList.contains('pixel-selected-p1') || pixel.classList.contains('pixel-selected-p2'));
+        setTimeout(() => {
+            this.selectPixel(pixel);
+        }, 500);
     }
 
     selectPixel = (pixel) => {
@@ -84,7 +99,9 @@ class GameZone extends React.Component {
     }
 
     handleClickPixel = (e) => {
-        this.selectPixel(e.target);
+        if(this.state.turn === 'p1') {
+            this.selectPixel(e.target);
+        }
     }
 
     handleReloadGame = (e) => {
@@ -104,16 +121,16 @@ class GameZone extends React.Component {
     render() {
         return (
             <div>
-                <div style = {styles.gameZone}>
-                    <div id="1" onClick={this.handleClickPixel} ref={this.pixels.pixel1} style={styles.pixel}></div>
-                    <div id="2" onClick={this.handleClickPixel} ref={this.pixels.pixel2} style={{...styles.pixel, ...styles.leftBordered, ...styles.rightBordered}}></div>
-                    <div id="3" onClick={this.handleClickPixel} ref={this.pixels.pixel3} style={styles.pixel}></div>
-                    <div id="4" onClick={this.handleClickPixel} ref={this.pixels.pixel4} style={{...styles.pixel, ...styles.topBordered, ...styles.bottomBordered}}></div>
-                    <div id="5" onClick={this.handleClickPixel} ref={this.pixels.pixel5} style={{...styles.pixel, ...styles.bordered}}></div>
-                    <div id="6" onClick={this.handleClickPixel} ref={this.pixels.pixel6} style={{...styles.pixel, ...styles.topBordered, ...styles.bottomBordered}}></div>
-                    <div id="7" onClick={this.handleClickPixel} ref={this.pixels.pixel7} style={styles.pixel}></div>
-                    <div id="8" onClick={this.handleClickPixel} ref={this.pixels.pixel8} style={{...styles.pixel, ...styles.leftBordered, ...styles.rightBordered}}></div>
-                    <div id="9" onClick={this.handleClickPixel} ref={this.pixels.pixel9} style={styles.pixel}></div>
+                <div className="game-zone">
+                    <div id="1" onClick={this.handleClickPixel} ref={this.pixels.pixel1} className="pixel"></div>
+                    <div id="2" onClick={this.handleClickPixel} ref={this.pixels.pixel2} className="pixel border-left border-right"></div>
+                    <div id="3" onClick={this.handleClickPixel} ref={this.pixels.pixel3} className="pixel"></div>
+                    <div id="4" onClick={this.handleClickPixel} ref={this.pixels.pixel4} className="pixel border-top border-bottom"></div>
+                    <div id="5" onClick={this.handleClickPixel} ref={this.pixels.pixel5} className="pixel border-full"></div>
+                    <div id="6" onClick={this.handleClickPixel} ref={this.pixels.pixel6} className="pixel border-top border-bottom"></div>
+                    <div id="7" onClick={this.handleClickPixel} ref={this.pixels.pixel7} className="pixel"></div>
+                    <div id="8" onClick={this.handleClickPixel} ref={this.pixels.pixel8} className="pixel border-left border-right"></div>
+                    <div id="9" onClick={this.handleClickPixel} ref={this.pixels.pixel9} className="pixel"></div>
                 </div>  
                  <div className={this.state.isPopupVisible? "popup-container show" : "popup-container"}>
                     <div className="popup-box">
@@ -123,37 +140,6 @@ class GameZone extends React.Component {
                 </div>
             </div>           
         );
-    }
-}
-
-const styles = {
-    gameZone: {
-      margin: '100px auto',
-      display: 'flex',
-      flexWrap: 'wrap',
-      height: '500px',
-      width: '500px',
-      justifyContent: 'center',
-      alignContent: 'center',
-    },
-    pixel: {
-      height: '33.2%',
-      width: '33.2%',
-    },
-    topBordered: {
-      borderTop: '1px solid #ccc'
-    },
-    bottomBordered: {
-      borderBottom: '1px solid #ccc'
-    },
-    leftBordered: {
-      borderLeft: '1px solid #ccc'
-    },
-    rightBordered: {
-      borderRight: '1px solid #ccc'
-    },
-    bordered: {
-      border: '1px solid #ccc'
     }
 }
 

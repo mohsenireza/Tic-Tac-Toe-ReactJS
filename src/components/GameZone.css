@@ -1,3 +1,38 @@
+.game-zone {
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    width: 500px;
+    justify-content: center;
+    align-content: center;
+}
+
+.pixel {
+    height: 33.2%;
+    width: 33.2%;
+}
+
+.border-top {
+    border-top: 1px solid #ccc;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.border-right {
+    border-right: 1px solid #ccc;
+}
+
+.border-left {
+    border-left: 1px solid #ccc;
+}
+
+.border-full {
+    border: 1px solid #ccc;
+}
+
 .pixel-selected-p1 {
     background: url('./cross-480.png') #fff 50% 50% no-repeat;
     background-size: 90px;
